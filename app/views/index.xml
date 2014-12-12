@@ -2,22 +2,30 @@
 	<Window class="container" layout="vertical" top="45">
 		<Label id="label" onClick="doClick">Hello, World</Label>
 
-        <Widget src="com.ksouthworth.spinnerinput" value="0.5" color="white" />
+        <!-- <Widget src="com.ksouthworth.spinnerinput" value="0.5" color="white" /> -->
 
         <Label>Hello again, World</Label>
 
-        <Widget src="com.ksouthworth.spinnerinput" />
+        <!-- <Widget src="com.ksouthworth.spinnerinput" /> -->
 
         <Label>Hello again, World</Label>
 
-        <Widget src="com.ksouthworth.spinnerinput" value="999" />
+        <Widget id="spin999" src="com.ksouthworth.spinnerinput" value="999" />
 
-        <View layout="horizontal">
-            <Widget src="com.ksouthworth.spinnerinput" value="1" />
-            <Widget src="com.ksouthworth.spinnerinput" value="2" />
-            <Widget src="com.ksouthworth.spinnerinput" value="3" />
-            <Widget src="com.ksouthworth.spinnerinput" value="4" />
-            <Widget src="com.ksouthworth.spinnerinput" value="5" />
+        <View layout="horizontal" height="Ti.UI.SIZE" backgroundColor="yellow">
+            <Widget id="spin1" src="com.ksouthworth.spinnerinput" value="1" stepValue="2" />
+            <Widget id="spin2" src="com.ksouthworth.spinnerinput" value="2" stepValue="0.5" />
+            <Widget id="spin3" src="com.ksouthworth.spinnerinput" value="3" />
+            <Widget id="spin4" src="com.ksouthworth.spinnerinput" value="4" />
+            <Widget id="spin5" src="com.ksouthworth.spinnerinput" value="5" />
         </View>
+
+        <Widget id="spin6" src="com.ksouthworth.spinnerinput" value="66" />
+
+        <Widget id="spin7" src="com.ksouthworth.spinnerinput" value="77" />
+
+<!--         <View id="sliderContainer" width="200dp" height="Ti.UI.SIZE" backgroundColor="blue">
+            <Slider id="verticalSlider" min="0" max="100" value="33" width="Ti.UI.FILL" height="Ti.UI.SIZE" backgroundColor="green" />
+        </View> -->
 	</Window>
 </Alloy>

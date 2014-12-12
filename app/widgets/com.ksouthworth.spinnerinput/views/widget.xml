@@ -1,25 +1,20 @@
 <Alloy>
-    <View id="view">
+    <View id="view" onPostlayout="onPostLayout">
     	<View id="container">
-            <TextField id="textField">
+            <TextField id="textField" onFocus="onTextFocus" onBlur="onTextBlur">
                 <KeyboardToolbar>
                     <Toolbar>
                         <Items>
-                            <Slider id="slider" min="0" max="100" onChange="onSliderChanged" />
                             <FlexSpace />
                             <Button id="done" onClick="dismissKeyboard">Done</Button>
                         </Items>
                     </Toolbar>
                 </KeyboardToolbar>
             </TextField>
-<!--             <View id="controls">
-                <Label id="spinnerUp" class="spinner" text="\uf077" top="0" onTouchstart="spinUp" />
-                <Label id="spinnerDown" class="spinner" text="\uf078" bottom="0" onTouchstart="spinDown" />
-            </View> -->
-            <View id="gesturePad" onTouchstart="touchStart" onTouchend="touchEnd" onTouchmove="touchMove">
+
+            <View id="gesturePad" onTouchstart="gestureTouchStart">
                 <Label class="iconFont" text="\uf07d" width="Ti.UI.FILL" height="Ti.UI.FILL" textAlign="center" />
             </View>
         </View>
-
     </View>
 </Alloy>
