@@ -1,11 +1,12 @@
 "#view":{
+    //layout: 'vertical',
     width: Ti.UI.SIZE,
     height: Ti.UI.SIZE
 }
 "#container":{
     //backgroundColor: 'green',
-    //layout: 'horizontal',
-    layout: 'vertical',
+    layout: 'horizontal',
+    //layout: 'vertical',
     width: Ti.UI.SIZE,
     height: Ti.UI.SIZE,
     borderRadius: 6,
@@ -21,6 +22,11 @@
     },
     keyboardType: Ti.UI.KEYBOARD_DECIMAL_PAD
 }
+"#gesturePad":{
+    width: '36dp',
+    height: '36dp',
+    backgroundColor: '#cccccc'
+}
 "#controls":{
     layout: 'horizontal',
     //width: Ti.UI.SIZE,
@@ -29,6 +35,11 @@
     backgroundColor: '#efefef',
     width: '76dp',
     height: '32dp',
+}
+".iconFont":{
+  font: {
+    fontFamily: 'FontAwesome'
+  }
 }
 ".spinner":{
   font: {

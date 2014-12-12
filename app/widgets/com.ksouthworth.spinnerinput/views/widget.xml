@@ -1,5 +1,5 @@
 <Alloy>
-    <View id="view" layout="vertical">
+    <View id="view">
     	<View id="container">
             <TextField id="textField">
                 <KeyboardToolbar>
@@ -12,9 +12,12 @@
                     </Toolbar>
                 </KeyboardToolbar>
             </TextField>
-            <View id="controls">
+<!--             <View id="controls">
                 <Label id="spinnerUp" class="spinner" text="\uf077" top="0" onTouchstart="spinUp" />
                 <Label id="spinnerDown" class="spinner" text="\uf078" bottom="0" onTouchstart="spinDown" />
+            </View> -->
+            <View id="gesturePad" onTouchstart="touchStart" onTouchend="touchEnd" onTouchmove="touchMove">
+                <Label class="iconFont" text="\uf07d" width="Ti.UI.FILL" height="Ti.UI.FILL" textAlign="center" />
             </View>
         </View>
 

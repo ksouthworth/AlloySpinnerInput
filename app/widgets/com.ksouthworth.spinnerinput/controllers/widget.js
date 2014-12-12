@@ -55,8 +55,8 @@ function applyProperties(properties) {
       color: properties.color
     };
     $.textField.applyProperties(commonProps);
-    $.spinnerUp.applyProperties(commonProps);
-    $.spinnerDown.applyProperties(commonProps);
+    // $.spinnerUp.applyProperties(commonProps);
+    // $.spinnerDown.applyProperties(commonProps);
   }
 }
 
@@ -78,4 +78,16 @@ function onSliderChanged(e) {
 
 function dismissKeyboard(e) {
   $.textField.blur();
+}
+
+function touchStart(e) {
+  Ti.API.debug('[touchStart] ' + e.x + ' , ' + e.y);
+}
+
+function touchEnd(e) {
+  Ti.API.debug('[touchEnd] ' + e.x + ' , ' + e.y);
+}
+
+function touchMove(e) {
+  Ti.API.debug('[touchMove] ' + e.x + ' , ' + e.y);
 }
