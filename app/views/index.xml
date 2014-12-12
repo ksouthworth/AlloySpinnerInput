@@ -1,0 +1,23 @@
+<Alloy>
+	<Window class="container" layout="vertical" top="45">
+		<Label id="label" onClick="doClick">Hello, World</Label>
+
+        <Widget src="com.ksouthworth.spinnerinput" value="0.5" color="white" />
+
+        <Label>Hello again, World</Label>
+
+        <Widget src="com.ksouthworth.spinnerinput" />
+
+        <Label>Hello again, World</Label>
+
+        <Widget src="com.ksouthworth.spinnerinput" value="999" />
+
+        <View layout="horizontal">
+            <Widget src="com.ksouthworth.spinnerinput" value="1" />
+            <Widget src="com.ksouthworth.spinnerinput" value="2" />
+            <Widget src="com.ksouthworth.spinnerinput" value="3" />
+            <Widget src="com.ksouthworth.spinnerinput" value="4" />
+            <Widget src="com.ksouthworth.spinnerinput" value="5" />
+        </View>
+	</Window>
+</Alloy>

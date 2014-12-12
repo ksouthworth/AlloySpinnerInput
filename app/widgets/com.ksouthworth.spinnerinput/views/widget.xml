@@ -1,0 +1,22 @@
+<Alloy>
+    <View id="view" layout="vertical">
+    	<View id="container">
+            <TextField id="textField">
+                <KeyboardToolbar>
+                    <Toolbar>
+                        <Items>
+                            <Slider id="slider" min="0" max="100" onChange="onSliderChanged" />
+                            <FlexSpace />
+                            <Button id="done" onClick="dismissKeyboard">Done</Button>
+                        </Items>
+                    </Toolbar>
+                </KeyboardToolbar>
+            </TextField>
+            <View id="controls">
+                <Label id="spinnerUp" class="spinner" text="\uf077" top="0" onTouchstart="spinUp" />
+                <Label id="spinnerDown" class="spinner" text="\uf078" bottom="0" onTouchstart="spinDown" />
+            </View>
+        </View>
+
+    </View>
+</Alloy>

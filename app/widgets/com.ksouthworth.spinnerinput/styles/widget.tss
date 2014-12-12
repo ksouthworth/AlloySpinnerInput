@@ -1,0 +1,48 @@
+"#view":{
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE
+}
+"#container":{
+    //backgroundColor: 'green',
+    //layout: 'horizontal',
+    layout: 'vertical',
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#cccccc'
+}
+"#textField":{
+    width: '50dp',
+    height: '36dp',
+    textAlign: 'right',
+    font: {
+        fontSize: 18
+    },
+    keyboardType: Ti.UI.KEYBOARD_DECIMAL_PAD
+}
+"#controls":{
+    layout: 'horizontal',
+    //width: Ti.UI.SIZE,
+    //height: '40dp',
+    //left: '6dp'
+    backgroundColor: '#efefef',
+    width: '76dp',
+    height: '32dp',
+}
+".spinner":{
+  font: {
+    fontFamily: 'FontAwesome',
+    fontSize: 20
+  },
+  textAlign: 'center',
+  width: '50%',
+  height: Ti.UI.FILL
+}
+"#slider":{
+    width: '230dp'
+}
+"#done": {
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE
+}
