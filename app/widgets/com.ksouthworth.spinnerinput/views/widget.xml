@@ -6,7 +6,7 @@
                     <Toolbar>
                         <Items>
                             <FlexSpace />
-                            <Button id="done" onClick="dismissKeyboard">Done</Button>
+                            <Button id="done" onClick="onDone">Done</Button>
                         </Items>
                     </Toolbar>
                 </KeyboardToolbar>

@@ -144,6 +144,10 @@ function spinDown(e) {
   setValue(parseFloat($.textField.value) - _spinnerStepValue);
 }
 
+function onDone(e) {
+  dismissKeyboard();
+}
+
 function dismissKeyboard(e) {
   $.textField.blur();
   _textFieldHasFocus = false;
