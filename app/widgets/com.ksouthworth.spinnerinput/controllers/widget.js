@@ -1,13 +1,3 @@
-// var AUTO_CLOSE_MILLIS = 500;
-// var STYLES = {
-//   controlsContainer: $.createStyle({classes: 'controlsContainer'}),
-//   bigSpinner: $.createStyle({classes: 'bigSpinner'}),
-//   topSpinner: $.createStyle({classes: 'bigSpinner topSpinner'}),
-//   bottomSpinner: $.createStyle({classes: 'bigSpinner bottomSpinner'}),
-//   spinnerWindow: $.createStyle({classes: 'spinnerWindow'}),
-//   spinnerSeparator: $.createStyle({classes: 'spinnerSeparator'})
-// };
-
 var _spinnerStepValue = 1;
 
 //-----------------------------
