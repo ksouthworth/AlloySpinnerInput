@@ -6,13 +6,13 @@
                     <Toolbar>
                         <Items>
                             <FlexSpace />
-                            <Button id="done" onClick="onDone">Done</Button>
+                            <Button id="done" onClick="onKeyboardDone">Done</Button>
                         </Items>
                     </Toolbar>
                 </KeyboardToolbar>
             </TextField>
 
-            <View id="gesturePad" onTouchstart="gestureTouchStart">
+            <View id="spinnerTrigger" onTouchstart="onShowSpinner">
                 <Label class="iconFont" text="\uf07d" width="Ti.UI.FILL" height="Ti.UI.FILL" textAlign="center" />
             </View>
         </View>

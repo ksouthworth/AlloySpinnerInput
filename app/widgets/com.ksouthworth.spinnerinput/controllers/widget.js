@@ -1,6 +1,9 @@
 var AUTO_CLOSE_MILLIS = 500;
 var STYLES = {
+  controlsContainer: $.createStyle({classes: 'controlsContainer'}),
   bigSpinner: $.createStyle({classes: 'bigSpinner'}),
+  topSpinner: $.createStyle({classes: 'bigSpinner topSpinner'}),
+  bottomSpinner: $.createStyle({classes: 'bigSpinner bottomSpinner'}),
   spinnerWindow: $.createStyle({classes: 'spinnerWindow'}),
   spinnerSeparator: $.createStyle({classes: 'spinnerSeparator'})
 };
@@ -37,11 +40,40 @@ if(arguments[0]) {
 //-----------------------------
 // Create Spinner Window
 //-----------------------------
-var _spinnerWindow = Ti.UI.createWindow(_.extend(STYLES.spinnerWindow, {
-  width: '50dp',
-  height: '100dp',
-  layout: 'vertical'
+var _spinnerWindow = Ti.UI.createWindow({
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  //backgroundColor: 'yellow',
+  //opacity: 0.1
+  backgroundColor: 'transparent'
+});
+var overlay = Ti.UI.createView({
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: 'black',
+  opacity: 0.4
+});
+
+var controlsContainer = Ti.UI.createView(STYLES.controlsContainer);
+var _spinnerUp = Ti.UI.createLabel(_.extend(STYLES.topSpinner, {
+  text: '\uf077',
+  width: '50dp'
 }));
+var _spinnerDown = Ti.UI.createLabel(_.extend(STYLES.bottomSpinner, {
+  text: '\uf078',
+  width: '50dp'
+}));
+_spinnerUp.addEventListener('touchstart', function(e) { e.spinDirection = 'up'; spinnerClick(e); });
+_spinnerDown.addEventListener('touchstart', function(e) { e.spinDirection = 'down'; spinnerClick(e); });
+
+controlsContainer.add(_spinnerUp);
+controlsContainer.add(Ti.UI.createView(STYLES.spinnerSeparator));
+controlsContainer.add(_spinnerDown);
+_spinnerWindow.add(overlay);
+_spinnerWindow.add(controlsContainer);
+_spinnerWindow.addEventListener('touchstart', onSpinnerWindowTouch);
+
+/*
 var _spinnerUp = Ti.UI.createLabel(_.extend(STYLES.bigSpinner, {
   text: '\uf077'
 }));
@@ -50,6 +82,12 @@ var _spinnerDown = Ti.UI.createLabel(_.extend(STYLES.bigSpinner, {
 }));
 _spinnerUp.addEventListener('touchstart', function(e) { e.spinDirection = 'up'; bigSpinnerClick(e); });
 _spinnerDown.addEventListener('touchstart', function(e) { e.spinDirection = 'down'; bigSpinnerClick(e); });
+
+var _spinnerWindow = Ti.UI.createWindow(_.extend(STYLES.spinnerWindow, {
+  width: '50dp',
+  height: '100dp',
+  layout: 'vertical'
+}));
 _spinnerWindow.add(_spinnerUp);
 _spinnerWindow.add(Ti.UI.createView(STYLES.spinnerSeparator));
 _spinnerWindow.add(_spinnerDown);
@@ -57,6 +95,7 @@ _spinnerWindow.addEventListener('blur', function() {
   Ti.API.debug('spinner ' + exports.id + ' -> window [blur]');
   _spinnerWindow.close();
 });
+*/
 
 /**
  * Apply TSS style properties to our widget
@@ -76,8 +115,6 @@ function applyProperties(properties) {
       color: properties.color
     };
     $.textField.applyProperties(commonProps);
-    // $.spinnerUp.applyProperties(commonProps);
-    // $.spinnerDown.applyProperties(commonProps);
   }
 }
 
@@ -87,11 +124,6 @@ function onPostLayout() {
   if(_absolutePosition === null) {
     calculateAbsolutePosition();
   }
-
-  // _spinnerWindow.applyProperties({
-  //   top: ($.view.rect.y + 45 - 30),
-  //   left: ($.view.rect.x + $.textField.rect.width),
-  // });
 }
 
 function calculateAbsolutePosition() {
@@ -116,8 +148,54 @@ function calculateAbsolutePosition() {
   Ti.API.debug('calculateAbsolutePosition -> end = ' + JSON.stringify(pos));
 
   _absolutePosition = pos;
+
+  controlsContainer.applyProperties({
+    top: (_absolutePosition ? _absolutePosition.y : $.view.rect.y) - 50 + 18,
+    left: (_absolutePosition ? _absolutePosition.x : $.view.rect.x) + $.textField.rect.width,
+  });
 }
 
+function onTextFocus(e) {
+  Ti.API.debug('spinner ' + exports.id + ' -> [textFocus]');
+}
+
+function onTextBlur(e) {
+  Ti.API.debug('spinner ' + exports.id + ' -> [textBlur]');
+}
+
+function onKeyboardDone(e) {
+  Ti.API.debug('spinner ' + exports.id + ' -> [keyboard done]');
+  _spinnerWindow.close();
+  $.textField.blur();
+}
+
+function spinnerClick(e) {
+  e.cancelBubble = true;
+  Ti.API.debug('spinner ' + exports.id + ' -> ' + e.spinDirection);
+  // _spinnerLastTouchedAt = new Date();
+  // if(e.spinDirection == 'up') {
+  //   spinUp();
+  // } else if(e.spinDirection == 'down') {
+  //   spinDown();
+  // }
+}
+
+function onSpinnerWindowTouch(e) {
+  Ti.API.debug('spinner window ' + exports.id + ' -> [touch]');
+  _spinnerWindow.close();
+}
+
+function onShowSpinner(e) {
+  //_spinnerWindow.open({modal: true});
+
+  // controlsContainer.applyProperties({
+  //   top: (_absolutePosition ? _absolutePosition.y : $.view.rect.y) - 50 + 18,
+  //   left: (_absolutePosition ? _absolutePosition.x : $.view.rect.x) + $.textField.rect.width,
+  // });
+  _spinnerWindow.open();
+}
+
+/*
 function onTextFocus(e) {
   Ti.API.debug('spinner ' + exports.id + ' -> [textFocus]');
   _textFieldHasFocus = true;
@@ -126,9 +204,6 @@ function onTextFocus(e) {
 
 function onTextBlur(e) {
   Ti.API.debug('spinner ' + exports.id + ' -> [textBlur]');
-  // _textFieldHasFocus = true;
-  // _textFieldHasFocus = false;
-  // closeSpinnerWindow();
   _spinnerWindow.close();
 }
 
@@ -155,10 +230,7 @@ function dismissKeyboard(e) {
 }
 
 function gestureTouchStart(e) {
-  // Ti.API.debug('spinner ' + exports.id + ' -> [gestureTouchStart] ' + e.x + ' , ' + e.y);
   _spinnerWindow.open({
-    // top: ($.view.rect.y + $.parent.rect.y),
-    // left: ($.view.rect.x + $.textField.rect.width),
     top: (_absolutePosition ? _absolutePosition.y : $.view.rect.y) - 50 + 18,
     left: (_absolutePosition ? _absolutePosition.x : $.view.rect.x) + $.textField.rect.width,
   });
@@ -169,7 +241,6 @@ function gestureTouchStart(e) {
 }
 
 function bigSpinnerClick(e) {
-  // Ti.API.debug('[bigSpinnerClick] e: ' + JSON.stringify(e));
   _spinnerLastTouchedAt = new Date();
   if(e.spinDirection == 'up') {
     spinUp();
@@ -189,3 +260,4 @@ function closeSpinnerWindow() {
     setTimeout(closeSpinnerWindow, 100);
   }
 }
+*/

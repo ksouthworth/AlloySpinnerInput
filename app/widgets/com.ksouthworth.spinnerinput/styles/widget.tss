@@ -19,7 +19,7 @@
     },
     keyboardType: Ti.UI.KEYBOARD_DECIMAL_PAD
 }
-"#gesturePad":{
+"#spinnerTrigger":{
     width: '30dp',
     height: '36dp',
     backgroundColor: '#cccccc'
@@ -29,13 +29,19 @@
     fontFamily: 'FontAwesome'
   }
 }
-".spinnerWindow":{
+".controlsContainer":{
     backgroundColor: '#cccccc',
     borderColor: '#999999',
     borderRadius: 6,
-    borderWidth: 1
+    borderWidth: 1,
+    width: '50dp',
+    height: Ti.UI.SIZE,
+    layout: 'vertical',
+    opacity: 1.0
 }
+
 ".bigSpinner":{
+  //backgroundColor: 'orange',
   font: {
     fontFamily: 'FontAwesome',
     fontSize: 24,
@@ -43,6 +49,12 @@
   textAlign: 'center',
   width: Ti.UI.FILL,
   height: '50dp'
+}
+".topSpinner": {
+
+}
+".bottomSpinner": {
+
 }
 ".spinnerSeparator":{
     width: Ti.UI.FILL,
