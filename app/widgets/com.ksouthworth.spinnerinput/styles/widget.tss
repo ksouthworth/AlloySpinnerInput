@@ -1,17 +1,17 @@
 "#view":{
-    width: Ti.UI.SIZE,
-    height: Ti.UI.SIZE
-}
-"#container":{
-    layout: 'horizontal',
-    width: Ti.UI.SIZE,
+    width: '80dp',
     height: Ti.UI.SIZE,
     borderRadius: 6,
     borderWidth: 1,
     borderColor: '#cccccc'
 }
+"#container":{
+    layout: 'vertical',
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE
+}
 "#textField":{
-    width: '50dp',
+    width: Ti.UI.FILL,
     height: '36dp',
     textAlign: 'center',
     font: {
@@ -19,50 +19,20 @@
     },
     keyboardType: Ti.UI.KEYBOARD_DECIMAL_PAD
 }
-"#spinnerTrigger":{
-    width: '30dp',
-    height: '36dp',
-    backgroundColor: '#cccccc'
-}
-".iconFont":{
-  font: {
-    fontFamily: 'FontAwesome'
-  }
-}
-".controlsContainer":{
+"#controlsContainer":{
+    layout: 'horizontal',
     backgroundColor: '#cccccc',
-    borderColor: '#999999',
-    borderRadius: 6,
-    borderWidth: 1,
-    width: '50dp',
-    height: Ti.UI.SIZE,
-    layout: 'vertical',
-    opacity: 1.0
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
 }
-
-".bigSpinner":{
-  //backgroundColor: 'orange',
+".spinner":{
   font: {
     fontFamily: 'FontAwesome',
     fontSize: 24,
   },
   textAlign: 'center',
-  width: Ti.UI.FILL,
-  height: '50dp'
-}
-".topSpinner": {
-
-}
-".bottomSpinner": {
-
-}
-".spinnerSeparator":{
-    width: Ti.UI.FILL,
-    height: '1px',
-    backgroundColor: '#666666',
-    //viewShadowColor: 'white',
-    //viewShadowOffset: { x: 0, y: 1 },
-    //viewShadowRadius: 2,
+  width: '50%',
+  height: '40dp'
 }
 "#done": {
     width: Ti.UI.SIZE,

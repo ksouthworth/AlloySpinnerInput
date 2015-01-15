@@ -1,7 +1,7 @@
 <Alloy>
-    <View id="view" onPostlayout="onPostLayout">
+    <View id="view">
     	<View id="container">
-            <TextField id="textField" onFocus="onTextFocus" onBlur="onTextBlur">
+            <TextField id="textField">
                 <KeyboardToolbar>
                     <Toolbar>
                         <Items>
@@ -11,9 +11,9 @@
                     </Toolbar>
                 </KeyboardToolbar>
             </TextField>
-
-            <View id="spinnerTrigger" onTouchstart="onShowSpinner">
-                <Label class="iconFont" text="\uf07d" width="Ti.UI.FILL" height="Ti.UI.FILL" textAlign="center" />
+            <View id="controlsContainer" >
+                <Label class="spinner" text="\uf077" onTouchstart="onSpinUp" />
+                <Label class="spinner" text="\uf078" onTouchstart="onSpinDown" />
             </View>
         </View>
     </View>
